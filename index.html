@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prof. Mohammed Es-Souni | IMST – Antifouling Surfaces & Energy Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#090c0f; --bg2:#10151a; --bg3:#171d23;
+    --border:rgba(255,255,255,0.07); --border2:rgba(255,255,255,0.13);
+    --text:#e6e2da; --text2:#8a9099; --text3:#525c66;
+    --gold:#c9a84c; --gold2:#e8c97a;
+    --teal:#2eb89a; --teal2:#1a7a67;
+    --blue:#4a9eca; --blue2:#2d6e96;
+    --accent-af:rgba(46,184,154,0.08);
+    --accent-en:rgba(74,158,202,0.08);
+    --fd:'Cormorant Garamond',serif; --fb:'DM Sans',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--fb);font-size:16px;line-height:1.7;overflow-x:hidden;}
+
+  /* ── NAV ── */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(9,12,15,0.9);backdrop-filter:blur(18px);border-bottom:0.5px solid var(--border);}
+  .nav-logo{font-family:var(--fd);font-size:1.15rem;font-weight:600;color:var(--gold);letter-spacing:0.05em;text-decoration:none;}
+  .nav-links{display:flex;gap:2rem;list-style:none;}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:0.76rem;letter-spacing:0.09em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--gold);}
+
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 4rem;gap:4rem;position:relative;overflow:hidden;}
+  .grid-bg{position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:72px 72px;mask-image:radial-gradient(ellipse at 60% 50%,rgba(0,0,0,0.3) 0%,transparent 72%);}
+  .glow-af{position:absolute;top:20%;right:5%;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(46,184,154,0.07) 0%,transparent 70%);pointer-events:none;}
+  .glow-en{position:absolute;bottom:20%;right:20%;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(74,158,202,0.07) 0%,transparent 70%);pointer-events:none;}
+  .hero-content{position:relative;z-index:1;}
+  .eyebrow{font-size:0.71rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem;display:flex;align-items:center;gap:0.7rem;}
+  .eyebrow::before{content:'';display:block;width:26px;height:1px;background:var(--gold);}
+  h1{font-family:var(--fd);font-size:clamp(2.8rem,4.8vw,4.3rem);font-weight:300;line-height:1.06;margin-bottom:1.3rem;}
+  h1 em{font-style:italic;color:var(--gold2);}
+  .hero-desc{color:var(--text2);font-size:0.98rem;max-width:460px;margin-bottom:2rem;line-height:1.88;}
+  /* Two pillars tag */
+  .pillars{display:flex;gap:0.8rem;margin-bottom:2.4rem;flex-wrap:wrap;}
+  .pillar{display:flex;align-items:center;gap:0.5rem;padding:0.45rem 1rem;border:0.5px solid;font-size:0.75rem;letter-spacing:0.07em;text-transform:uppercase;}
+  .pillar-af{border-color:rgba(46,184,154,0.4);color:var(--teal);}
+  .pillar-en{border-color:rgba(74,158,202,0.4);color:var(--blue);}
+  .pillar-dot{width:6px;height:6px;border-radius:50%;}
+  .pillar-af .pillar-dot{background:var(--teal);}
+  .pillar-en .pillar-dot{background:var(--blue);}
+  .stats{display:flex;gap:2.8rem;margin-bottom:2.6rem;}
+  .stat-num{font-family:var(--fd);font-size:2.3rem;font-weight:300;color:var(--gold2);display:block;line-height:1;}
+  .stat-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text3);margin-top:0.3rem;display:block;}
+  .cta{display:inline-flex;align-items:center;gap:0.65rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.78rem 1.7rem;font-family:var(--fb);font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;cursor:pointer;}
+  .cta:hover{background:rgba(201,168,76,0.09);}
+  .cta-ghost{border-color:var(--border2);color:var(--text2);margin-left:0.8rem;}
+  .cta-ghost:hover{border-color:var(--text2);color:var(--text);background:transparent;}
+  .portrait-wrap{position:relative;width:400px;height:500px;}
+  .portrait-wrap::before{content:'';position:absolute;top:-13px;right:-13px;bottom:13px;left:13px;border:1px solid rgba(201,168,76,0.2);pointer-events:none;}
+  .portrait{width:100%;height:100%;background:var(--bg3);border:1px solid var(--border2);overflow:hidden;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:5rem;color:var(--text3);}
+  .portrait img{width:100%;height:100%;object-fit:cover;}
+  .hero-right{display:flex;align-items:center;justify-content:center;}
+
+  /* ── SECTION BASE ── */
+  section{padding:6rem 4rem;}
+  section+section{border-top:0.5px solid var(--border);}
+  .sec-label{font-size:0.69rem;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.85rem;display:flex;align-items:center;gap:0.65rem;}
+  .sec-label::before{content:'';display:block;width:20px;height:1px;}
+  .sec-label.gold{color:var(--gold);} .sec-label.gold::before{background:var(--gold);}
+  .sec-label.teal{color:var(--teal);} .sec-label.teal::before{background:var(--teal);}
+  .sec-label.blue{color:var(--blue);} .sec-label.blue::before{background:var(--blue);}
+  h2{font-family:var(--fd);font-size:clamp(1.9rem,3vw,2.85rem);font-weight:300;line-height:1.1;margin-bottom:0.65rem;}
+  h2 em{font-style:italic;}
+  h2 em.af{color:var(--teal);}
+  h2 em.en{color:var(--blue);}
+  h2 em.go{color:var(--gold2);}
+  .sec-intro{color:var(--text2);max-width:580px;font-size:0.95rem;margin-bottom:3.2rem;line-height:1.85;}
+
+  /* ── ABOUT ── */
+  .about-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:4.5rem;align-items:start;}
+  .bio{color:var(--text2);line-height:1.9;font-size:0.97rem;}
+  .bio p+p{margin-top:1.05rem;}
+  .bio strong{color:var(--text);font-weight:500;}
+  .bio .funding-bar{display:flex;align-items:center;gap:1rem;margin-top:1.5rem;padding:0.85rem 1.2rem;border:0.5px solid rgba(201,168,76,0.28);}
+  .funding-bar .fval{font-family:var(--fd);font-size:1.6rem;color:var(--gold2);}
+  .funding-bar .fdesc{font-size:0.8rem;color:var(--text2);line-height:1.5;}
+  .awards-list{list-style:none;}
+  .award-item{display:flex;gap:1.3rem;padding:1rem 0;border-bottom:0.5px solid var(--border);align-items:flex-start;}
+  .award-year{font-family:var(--fd);font-size:1.05rem;color:var(--gold);min-width:42px;padding-top:2px;}
+  .award-text{color:var(--text2);font-size:0.87rem;line-height:1.5;}
+  .award-text strong{color:var(--text);display:block;font-weight:500;margin-bottom:0.1rem;}
+
+  /* ── PILLAR SECTIONS ── */
+  .pillar-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:3rem;}
+  .pillar-stripe{width:4px;height:52px;border-radius:2px;}
+  .stripe-af{background:linear-gradient(to bottom,var(--teal),var(--teal2));}
+  .stripe-en{background:linear-gradient(to bottom,var(--blue),var(--blue2));}
+
+  /* Technology cards */
+  .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+  .tech-card{background:var(--bg2);padding:2rem 1.7rem;transition:background 0.2s;position:relative;overflow:hidden;}
+  .tech-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .tech-card.af::before{background:linear-gradient(to right,var(--teal),transparent);}
+  .tech-card.en::before{background:linear-gradient(to right,var(--blue),transparent);}
+  .tech-card:hover{background:var(--bg3);}
+  .tc-icon{font-size:1.3rem;margin-bottom:1.2rem;}
+  h3{font-family:var(--fd);font-size:1.2rem;font-weight:400;color:var(--text);margin-bottom:0.6rem;line-height:1.3;}
+  .tc-desc{color:var(--text2);font-size:0.87rem;line-height:1.72;}
+  .tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:1rem;}
+  .tag{font-size:0.65rem;letter-spacing:0.07em;text-transform:uppercase;padding:0.2rem 0.5rem;border:0.5px solid var(--border2);color:var(--text3);}
+
+  /* Highlight feature row */
+  .feature-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:1px;}
+  .feat{background:var(--bg2);padding:1.8rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;transition:background 0.2s;}
+  .feat:hover{background:var(--bg3);}
+  .feat-num{font-family:var(--fd);font-size:2.2rem;font-weight:300;line-height:1;min-width:44px;}
+  .feat-num.af{color:var(--teal);}
+  .feat-num.en{color:var(--blue);}
+  .feat-title{font-size:0.95rem;font-weight:500;color:var(--text);margin-bottom:0.35rem;}
+  .feat-body{font-size:0.84rem;color:var(--text2);line-height:1.65;}
+
+  /* ── CAREER ── */
+  .timeline{position:relative;padding-left:1.8rem;}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border2) 8%,var(--border2) 92%,transparent);}
+  .tl-item{position:relative;padding:0 0 2.5rem 2.8rem;}
+  .tl-dot{position:absolute;left:-4.5px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1.5px solid var(--gold);}
+  .tl-year{font-family:var(--fd);font-size:0.9rem;color:var(--gold);margin-bottom:0.22rem;}
+  .tl-title{font-size:0.96rem;font-weight:500;color:var(--text);margin-bottom:0.3rem;}
+  .tl-body{color:var(--text2);font-size:0.86rem;line-height:1.65;}
+
+  /* ── PUBLICATIONS ── */
+  .pub-filters{display:flex;gap:0.45rem;margin-bottom:2.2rem;flex-wrap:wrap;}
+  .pf{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.32rem 0.75rem;border:0.5px solid var(--border2);color:var(--text3);cursor:pointer;transition:all 0.18s;background:transparent;}
+  .pf.active-af,.pf.active-af:hover{border-color:var(--teal);color:var(--teal);}
+  .pf.active-en,.pf.active-en:hover{border-color:var(--blue);color:var(--blue);}
+  .pf.active-all{border-color:var(--gold);color:var(--gold);}
+  .pf:hover{border-color:var(--text2);color:var(--text2);}
+  .pub-list{display:flex;flex-direction:column;}
+  .pub-item{display:grid;grid-template-columns:48px 1fr auto;gap:1.3rem;align-items:start;padding:1.5rem 0;border-bottom:0.5px solid var(--border);}
+  .pub-num{font-family:var(--fd);font-size:1.8rem;font-weight:300;line-height:1;padding-top:4px;text-align:right;}
+  .pub-num.af{color:rgba(46,184,154,0.4);}
+  .pub-num.en{color:rgba(74,158,202,0.4);}
+  .pub-title{font-family:var(--fd);font-size:1.03rem;color:var(--text);margin-bottom:0.28rem;line-height:1.35;}
+  .pub-meta{font-size:0.78rem;color:var(--text3);}
+  .pub-journal{font-style:italic;}
+  .pub-journal.af{color:var(--teal);}
+  .pub-journal.en{color:var(--blue);}
+  .pub-doi{font-size:0.73rem;color:var(--text3);margin-top:0.18rem;}
+  .pub-doi a{color:var(--gold);text-decoration:none;}
+  .pub-doi a:hover{text-decoration:underline;}
+  .pub-badge{font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.26rem 0.6rem;white-space:nowrap;height:fit-content;margin-top:5px;}
+  .pub-badge.af{border:0.5px solid rgba(46,184,154,0.4);color:var(--teal);}
+  .pub-badge.en{border:0.5px solid rgba(74,158,202,0.4);color:var(--blue);}
+
+  /* ── PATENTS ── */
+  .patents-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);}
+  .pat-card{background:var(--bg2);padding:1.8rem 1.6rem;transition:background 0.2s;position:relative;overflow:hidden;}
+  .pat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;}
+  .pat-card.af::before{background:linear-gradient(to right,var(--teal),transparent);}
+  .pat-card.en::before{background:transparent;}
+  .pat-card:hover{background:var(--bg3);}
+  .pat-num{font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+  .pat-title{font-family:var(--fd);font-size:1.02rem;color:var(--text);margin-bottom:0.5rem;line-height:1.35;}
+  .pat-detail{font-size:0.82rem;color:var(--text2);line-height:1.6;}
+  .pat-granted{font-size:0.7rem;color:var(--teal);margin-top:0.5rem;}
+
+  /* ── LICENSING ── */
+  .lic-banner{background:var(--bg3);border:1px solid rgba(201,168,76,0.2);padding:3.2rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;margin-top:3rem;}
+
+  /* ── CONTACT ── */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;}
+  .ci{display:flex;flex-direction:column;gap:0.28rem;}
+  .ci-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);}
+  .ci-val{color:var(--text);font-size:0.95rem;}
+  .ci-val a{color:var(--gold);text-decoration:none;}
+  .ci-val a:hover{text-decoration:underline;}
+
+  /* ── FOOTER ── */
+  footer{padding:2rem 4rem;border-top:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;color:var(--text3);font-size:0.76rem;}
+  .foot-logo{font-family:var(--fd);color:var(--gold);font-size:0.95rem;}
+  footer a{color:var(--text3);text-decoration:none;margin-left:1.4rem;}
+  footer a:hover{color:var(--text2);}
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .hero-content>*{animation:fadeUp 0.65s ease both;}
+  .hero-content>*:nth-child(1){animation-delay:0.08s}
+  .hero-content>*:nth-child(2){animation-delay:0.18s}
+  .hero-content>*:nth-child(3){animation-delay:0.28s}
+  .hero-content>*:nth-child(4){animation-delay:0.36s}
+  .hero-content>*:nth-child(5){animation-delay:0.44s}
+  .hero-content>*:nth-child(6){animation-delay:0.52s}
+  .hero-right{animation:fadeUp 0.85s 0.28s ease both;}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+    .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem;} .hero-right{display:none;}
+    section{padding:3.8rem 1.5rem;}
+    .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .tech-grid{grid-template-columns:1fr;}
+    .feature-row,.patents-grid{grid-template-columns:1fr;}
+    .lic-banner{grid-template-columns:1fr;padding:1.8rem;}
+    .stats{gap:1.8rem;}
+    footer{flex-direction:column;gap:0.8rem;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">IMST · Es-Souni</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#antifouling">Antifouling</a></li>
+    <li><a href="#energy">Hydrogen & Catalysis</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents & IP</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="grid-bg"></div>
+  <div class="glow-af"></div>
+  <div class="glow-en"></div>
+  <div class="hero-content">
+    <div class="eyebrow">IMST — Institut für Werkstoff- und Oberflächentechnologie · Kiel</div>
+    <h1>Prof. Mohammed<br><em>Es-Souni</em></h1>
+    <p class="hero-desc">Honorary Member, Kiel University of Applied Sciences. Pioneering sustainable functional coatings that protect surfaces and enable clean energy — from antibiofouling surfaces to electrocatalytic thin films for green hydrogen production.</p>
+    <div class="pillars">
+      <div class="pillar pillar-af"><div class="pillar-dot"></div>Antibiofouling Surfaces</div>
+      <div class="pillar pillar-en"><div class="pillar-dot"></div>Hydrogen & Electrocatalysis</div>
+    </div>
+    <div class="stats">
+      <div><span class="stat-num">160+</span><span class="stat-label">Publications</span></div>
+      <div><span class="stat-num">15</span><span class="stat-label">Patents</span></div>
+      <div><span class="stat-num">€15M+</span><span class="stat-label">Research funding</span></div>
+      <div><span class="stat-num">35+</span><span class="stat-label">Years active</span></div>
+    </div>
+    <div>
+      <a href="#antifouling" class="cta">Explore Technologies →</a>
+      <a href="#contact" class="cta cta-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="portrait-wrap">
+      <div class="portrait">
+        <img src="https://www.imst-essouni.com/wp-content/uploads/2020/08/fpr-es-souni-2865.jpg"
+             alt="Prof. Mohammed Es-Souni"
+             onerror="this.style.display='none';this.parentNode.innerHTML='ME'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label gold">About</div>
+  <h2>Materials scientist &<br><em class="go">surface engineer</em></h2>
+  <div class="about-grid">
+    <div class="bio">
+      <p>Prof. Mohammed Es-Souni is an <strong>Honorary Member of Kiel University of Applied Sciences</strong> and founder of <strong>IMST — Institut für Werkstoff- und Oberflächentechnologie</strong>. Over 35 years, his research has consistently delivered functional coating technologies that solve real-world problems in medicine, industry, and energy.</p>
+      <p>His work centres on two commercially impactful pillars: <strong>release-free antibiofouling and scratch-resistant coatings</strong> for medical devices, contact lenses, implants, and industrial surfaces; and <strong>electrocatalytic thin-film coatings for green hydrogen production</strong> alongside nanostructured electrochemical energy storage systems.</p>
+      <p>All coating technologies are developed using <strong>environmentally sustainable methods</strong> — photografting, sol-gel deposition, and electrochemical processing — enabling scale-up from laboratory to industrial production without hazardous processing routes.</p>
+      <p>His research has been funded by the <strong>DFG, German Federal Ministries, and the European Union</strong>, with a cumulative portfolio exceeding €15 million. Five technology transfer awards recognise the consistent translation of research into industrial value.</p>
+      <div class="funding-bar">
+        <span class="fval">€15M+</span>
+        <span class="fdesc">Cumulative research funding<br>DFG · Federal Ministries · European Union</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-label gold" style="margin-bottom:1.1rem;">Awards</div>
+      <ul class="awards-list">
+        <li class="award-item"><span class="award-year">2019</span><div class="award-text"><strong>Innovation Award — City of Kiel</strong>Outstanding contribution to applied research and technology</div></li>
+        <li class="award-item"><span class="award-year">2012</span><div class="award-text"><strong>Technology Transfer Award (1st Prize)</strong>Innovation Foundation Schleswig-Holstein</div></li>
+        <li class="award-item"><span class="award-year">2010</span><div class="award-text"><strong>Transfer Award</strong>Outstanding Research & Technology Transfer activities</div></li>
+        <li class="award-item"><span class="award-year">2002</span><div class="award-text"><strong>Technology Award — Land Schleswig-Holstein</strong>Excellence in research and technology transfer</div></li>
+        <li class="award-item"><span class="award-year">1992</span><div class="award-text"><strong>Best Paper Award</strong>International Metallographic Society</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ANTIFOULING -->
+<section id="antifouling" style="background:linear-gradient(180deg,var(--bg) 0%,rgba(46,184,154,0.03) 100%);">
+  <div class="pillar-header">
+    <div class="pillar-stripe stripe-af"></div>
+    <div>
+      <div class="sec-label teal">Technology Pillar I</div>
+      <h2><em class="af">Antibiofouling</em> &<br>Scratch-Resistant Surfaces</h2>
+    </div>
+  </div>
+  <p class="sec-intro">Release-free, durable anti-adhesive coatings that resist protein adsorption, bacterial colonisation, and mechanical wear — without biocides or leachable agents. Engineered for medical, optical, and industrial applications.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card af">
+      <div class="tc-icon">◎</div>
+      <h3>Photografted Polymer Brush Systems</h3>
+      <p class="tc-desc">UV-initiated photografting of PEG, pSBMA, and related antifouling polymer chains directly onto substrate surfaces including porous alumina, metals, and polymers. Chemically anchored brushes resist protein adsorption and bacterial adhesion without releasing agents.</p>
+      <div class="tags"><span class="tag">PEG brushes</span><span class="tag">pSBMA</span><span class="tag">Photografting</span><span class="tag">Protein resistance</span></div>
+    </div>
+    <div class="tech-card af">
+      <div class="tc-icon">⬡</div>
+      <h3>Porous Oxide / Polymer Brush Composites</h3>
+      <p class="tc-desc">Pore walls of anodized alumina and other porous oxide supports are functionalized with photografted antifouling brushes. This architecture combines mechanical robustness of the oxide scaffold with the antifouling chemistry of the brush — enabling scratch-resistant, non-fouling surfaces.</p>
+      <div class="tags"><span class="tag">Porous alumina</span><span class="tag">Anodization</span><span class="tag">Nanomechanics</span><span class="tag">Scratch-resistant</span></div>
+    </div>
+    <div class="tech-card af">
+      <div class="tc-icon">◈</div>
+      <h3>Oxide-Polymer Nanocomposite Coatings</h3>
+      <p class="tc-desc">Inorganic-organic hybrid coatings combining metal oxide nanoparticles (TiO₂, SiO₂, Al₂O₃) with photografted antifouling polymer matrices. The hard oxide phase provides mechanical reinforcement and scratch resistance while the polymer brush imparts protein repellency — a superior architecture to purely organic multilayer systems.</p>
+      <div class="tags"><span class="tag">TiO₂ / SiO₂</span><span class="tag">Hybrid nanocomposite</span><span class="tag">Scratch-resistant</span><span class="tag">Protein-repellent</span></div>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feat">
+      <span class="feat-num af">01</span>
+      <div>
+        <div class="feat-title">Contact Lens Coatings (Patented)</div>
+        <div class="feat-body">Antifouling and wettability-enhancing coatings for rigid gas-permeable (RGP) contact lenses. Patented process (DE102018127812B4, granted 2020) providing long-term protein resistance and improved wearer comfort.</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num af">02</span>
+      <div>
+        <div class="feat-title">Medical Implant Surfaces (Patented)</div>
+        <div class="feat-body">Antibacterial and anti-adhesive coatings for medical implants (DE102018115709B4, granted 2020). NiTi shape memory alloy surfaces modified with photografted polymer brushes for smart implant applications.</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num af">03</span>
+      <div>
+        <div class="feat-title">Transparent Scratch-Resistant Antifouling (Patented)</div>
+        <div class="feat-body">Porous oxide-polymer nanocomposite architecture underpins the European patent (EP 18703549.8, granted 2022) for a transparent, scratch-resistant antifouling coating. The oxide scaffold provides hardness and optical transparency while the polymer brush prevents biofouling — validated for sensor covers, optics, and precision glass surfaces.</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num af">04</span>
+      <div>
+        <div class="feat-title">Membranes, Polymers & Silicones</div>
+        <div class="feat-body">Surface treatment of polymer nets, membranes, and silicone substrates for antifouling and hydrophilic performance. Suitable for filtration, microfluidics, and medical device housings via scalable photografting processes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENERGY -->
+<section id="energy" style="background:linear-gradient(180deg,var(--bg) 0%,rgba(74,158,202,0.03) 100%);">
+  <div class="pillar-header">
+    <div class="pillar-stripe stripe-en"></div>
+    <div>
+      <div class="sec-label blue">Technology Pillar II</div>
+      <h2><em class="en">Electrocatalytic Coatings</em><br>for Green Hydrogen</h2>
+    </div>
+  </div>
+  <p class="sec-intro">Thin-film electrocatalysts and nanostructured electrode coatings engineered for the hydrogen evolution reaction (HER) — maximising activity and durability while minimising precious metal loading. Sustainable, scalable, and validated in leading journals.</p>
+
+  <div class="tech-grid">
+    <div class="tech-card en">
+      <div class="tc-icon">⬡</div>
+      <h3>TiN-Based Electrocatalyst Films</h3>
+      <p class="tc-desc">Thin films of titanium nitride (TiN) with engineered oxygen defects act as robust, cost-effective HER electrocatalysts with outstanding performance. The defect engineering strategy tunes electronic structure and active site density without relying on platinum-group metals. Validated in <em>Nanomaterials</em> 2024.</p>
+      <div class="tags"><span class="tag">TiN</span><span class="tag">Oxygen defects</span><span class="tag">HER</span><span class="tag">Non-PGM</span></div>
+    </div>
+    <div class="tech-card en">
+      <div class="tc-icon">◈</div>
+      <h3>Nanorod-Supported Pd & Pt Catalysts</h3>
+      <p class="tc-desc">Au-nanorod arrays used as high-surface-area supports for Pd and Pt nanocatalysts deposited at ultra-low loading. Systematic study (Nanomaterials 2023) demonstrated Pd outperforms Pt mass-for-mass on Au-NR supports — directly informing cost-reduction strategies for green hydrogen electrolysers.</p>
+      <div class="tags"><span class="tag">Au nanorods</span><span class="tag">Pd catalyst</span><span class="tag">Low-PGM loading</span><span class="tag">Electrolysis</span></div>
+    </div>
+    <div class="tech-card en">
+      <div class="tc-icon">◉</div>
+      <h3>Porous PtPd Alloy Nanotube Coatings</h3>
+      <p class="tc-desc">Template-derived porous PtPd alloy nanotubes on substrate surfaces combine maximised active surface area with minimal Pt content. Demonstrated high-performance HER electrocatalysis with low Pt loading (<em>Catalysis Science & Technology</em> 2019) — a viable path to affordable water-splitting electrodes.</p>
+      <div class="tags"><span class="tag">PtPd nanotubes</span><span class="tag">Porous</span><span class="tag">Water splitting</span><span class="tag">Low Pt</span></div>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feat">
+      <span class="feat-num en">01</span>
+      <div>
+        <div class="feat-title">Sonochemical Nanoparticle Processing on TiN Substrates</div>
+        <div class="feat-body">Noble metal nanoparticles and nanoalloys synthesised directly on nanocarbon and TiN substrates from aqueous solution via sonochemistry — a green, one-step route eliminating surfactants and organic solvents. Enables electrode coatings with atomically dispersed catalyst phases (<em>Ultrasonics Sonochemistry</em> 2018; <em>Micromachines</em> 2023).</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num en">02</span>
+      <div>
+        <div class="feat-title">Nanocarbon & Carbon-CNT Composite Electrodes</div>
+        <div class="feat-body">Meso-macroporous graphite thin films and carbon-CNT nanocomposites processed via a novel on-substrate route provide high-surface-area, corrosion-resistant electrode supports. Modified nanocarbon surfaces with enhanced double-layer capacitance serve both as HER catalyst supports and as energy storage electrodes (<em>Carbon</em> 2017; <em>RSC Advances</em> 2014–2015).</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num en">03</span>
+      <div>
+        <div class="feat-title">Nanostructured Supercapacitor Electrodes</div>
+        <div class="feat-body">NiO nanostructures and Ni(OH)₂ nanolamellae electrode films deliver high specific capacitance for electrochemical energy storage — directly complementary to intermittent hydrogen production from renewable sources (<em>Nanoscale Research Letters</em> 2013; <em>Micromachines</em> 2023).</div>
+      </div>
+    </div>
+    <div class="feat">
+      <span class="feat-num en">04</span>
+      <div>
+        <div class="feat-title">Piezo- & Pyroelectric Harvesting (Background Capability)</div>
+        <div class="feat-body">Established competence in piezoelectric (PZT, PVDF-TrFE) and pyroelectric (PMN-PT, PIN-PMN-PT) thin films for mechanical and thermal energy conversion. Available as a secondary technology stream for hybrid energy systems integrating harvesting with electrochemical storage or hydrogen production.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="sec-label gold">Career</div>
+  <h2>Academic &<br><em class="go">scientific career</em></h2>
+  <div style="max-width:660px;">
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1993 – 2021 · Honorary Member thereafter</div><div class="tl-title">Professor — Materials & Surface Technology, FH Kiel</div><div class="tl-body">Chair of IMST, Faculty of Mechanical Engineering, Kiel University of Applied Sciences. Founded and led the institute through 28 years of research, technology transfer, and industrial collaboration. Cumulative project funding exceeding €15 million.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1987 – 1993</div><div class="tl-title">Research Scientist — GKSS Research Centre, Geesthacht (now Helmholtz Center)</div><div class="tl-body">Microstructure–property relationships in intermetallic titanium aluminides (γ-TiAl, Ti₃Al) for high-temperature structural applications.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1986</div><div class="tl-title">Habilitation (Doctorat ès Sciences) — Université de Strasbourg</div><div class="tl-body">Segregation phenomena at metal and alloy surfaces studied by electron spectroscopy (AES, XPS).</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1983</div><div class="tl-title">Doctorat de 3e cycle — Université de Besançon</div><div class="tl-body">Diffusion treatments of chromium coatings on steel substrates.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1980</div><div class="tl-title">Master of Sciences — Université de Besançon</div><div class="tl-body">Chemistry / Surface Chemistry and Properties.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="sec-label gold">Selected Publications</div>
+  <h2>Recent &<br><em class="go">key papers</em></h2>
+  <p class="sec-intro">Publications focused on antibiofouling surfaces and electrocatalytic coatings for hydrogen production, from a career total of 160+ peer-reviewed papers.</p>
+  <div class="pub-filters">
+    <button class="pf active-all" onclick="filterPubs('all',this,'active-all')">All</button>
+    <button class="pf" onclick="filterPubs('af',this,'active-af')">Antibiofouling</button>
+    <button class="pf" onclick="filterPubs('en',this,'active-en')">Hydrogen &amp; Catalysis</button>
+    <button class="pf" onclick="filterPubs('ep',this,'active-en')">Piezo / Pyro</button>
+  </div>
+  <div class="pub-list" id="pub-list">
+
+    <div class="pub-item" data-cat="af">
+      <div class="pub-num af">01</div>
+      <div>
+        <div class="pub-title">Non-fouling Polymer Films on Hard-Anodized Aluminum: Nanomechanical Properties and Modelling</div>
+        <div class="pub-meta">Bakhti, H.; Weyrich, T.; Es-Souni, Ma.; Laghrissi, A.; Es-Souni, M. · <span class="pub-journal af">Progress in Organic Coatings</span> · 2021, 161, 106553</div>
+        <div class="pub-doi"><a href="https://doi.org/10.1016/j.porgcoat.2021.106553" target="_blank">doi.org/10.1016/j.porgcoat.2021.106553 ↗</a></div>
+      </div>
+      <span class="pub-badge af">Non-fouling</span>
+    </div>
+
+    <div class="pub-item" data-cat="af">
+      <div class="pub-num af">02</div>
+      <div>
+        <div class="pub-title">Nanomechanical Characterization and Modeling of Anodized Porous Aluminum Oxide Films with Photografted Anti-Biofouling Polymer Brushes on Their Pore Walls</div>
+        <div class="pub-meta">Bakhti, H.; Laghrissi, A.; Roth, A.; Azrar, L.; Es-Souni, M. · <span class="pub-journal af">Applied Nanoscience</span> · 2020, 10, 2139–2151</div>
+        <div class="pub-doi"><a href="https://doi.org/10.1007/s13204-020-01338-6" target="_blank">doi.org/10.1007/s13204-020-01338-6 ↗</a></div>
+      </div>
+      <span class="pub-badge af">Polymer Brushes</span>
+    </div>
+
+    <div class="pub-item" data-cat="af">
+      <div class="pub-num af">03</div>
+      <div>
+        <div class="pub-title">Scratch-Resistant Non-Fouling Surfaces via Grafting Non-Fouling Polymers on the Pore Walls of Supported Porous Oxide Structures</div>
+        <div class="pub-meta">Wassel, E.; Es-Souni, Ma.; Laghrissi, A.; Roth, A.; Dietze, M.; Es-Souni, M. · <span class="pub-journal af">Materials and Design</span> · 2019, 163, 107542</div>
+        <div class="pub-doi"><a href="https://doi.org/10.1016/j.matdes.2018.107542" target="_blank">doi.org/10.1016/j.matdes.2018.107542 ↗</a></div>
+      </div>
+      <span class="pub-badge af">Scratch-Resistant</span>
+    </div>
+
+    <div class="pub-item" data-cat="af">
+      <div class="pub-num af">04</div>
+      <div>
+        <div class="pub-title">Processing of Nanotubes on NiTi-Shape Memory Alloys and Modification with Photografted Anti-Adhesive Polymer Brushes — Towards Smart Implant Surfaces</div>
+        <div class="pub-meta">Es-Souni, Ma.; Wassel, E.; Dietze, M.; Laghrissi, A.; Klöhn, F.; Weyrich, T.; Es-Souni, M. · <span class="pub-journal af">Materials and Design</span> · 2019, 182, 108031</div>
+        <div class="pub-doi"><a href="https://doi.org/10.1016/j.matdes.2019.108031" target="_blank">doi.org/10.1016/j.matdes.2019.108031 ↗</a></div>
+      </div>
+      <span class="pub-badge af">Smart Implants</span>
+    </div>
+
+    <div class="pub-item" data-cat="af">
+      <div class="pub-num af">06</div>
+      <div>
+        <div class="pub-title">Versatile Nanocomposite Coatings with Tunable Cell Adhesion and Bactericidity</div>
+        <div class="pub-meta">Es-Souni, Ma.; Fischer-Brandies, H.; Es-Souni, M. · <span class="pub-journal af">Advanced Functional Materials</span> · 2008, 18, 3179–3188</div>
+      </div>
+      <span class="pub-badge af">Bactericidal</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">08</div>
+      <div>
+        <div class="pub-title">Oxygen Defects Containing TiN Films for the Hydrogen Evolution Reaction: A Robust Thin-Film Electrocatalyst with Outstanding Performance</div>
+        <div class="pub-meta">Laghrissi, A.; Es-Souni, M. · <span class="pub-journal en">Nanomaterials</span> · 2024, 14, 770</div>
+        <div class="pub-doi"><a href="https://doi.org/10.3390/nano14090770" target="_blank">doi.org/10.3390/nano14090770 ↗</a></div>
+      </div>
+      <span class="pub-badge en">HER Catalyst</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">10</div>
+      <div>
+        <div class="pub-title">Towards High Capacitive Performance of Chemically Deposited β-Ni(OH)₂ Nanolamellae Electrode Films</div>
+        <div class="pub-meta">Moonooswamy, K.R.; Es-Souni, M. · <span class="pub-journal en">Micromachines</span> · 2023, 14, 1644</div>
+        <div class="pub-doi"><a href="https://doi.org/10.3390/mi14081644" target="_blank">doi.org/10.3390/mi14081644 ↗</a></div>
+      </div>
+      <span class="pub-badge en">Supercapacitor</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">11</div>
+      <div>
+        <div class="pub-title">Large-Area Thick Films of PVDF-TrFE and Relaxor-Ceramics for Piezo- and Pyroelectric Applications</div>
+        <div class="pub-meta">Dietze, M.; Es-Souni, M. · <span class="pub-journal en">Macromolecular Materials and Engineering</span> · 2019, 304, 1900538</div>
+        <div class="pub-doi">DOI: 10.1002/mame.201900538</div>
+      </div>
+      <span class="pub-badge en">Piezoelectric</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">12</div>
+      <div>
+        <div class="pub-title">Au-Nanorods Supporting Pd and Pt Nanocatalysts for the Hydrogen Evolution Reaction: Pd Is Revealed to Be a Better Catalyst than Pt</div>
+        <div class="pub-meta">Laghrissi, A.; Es-Souni, M. · <span class="pub-journal en">Nanomaterials</span> · 2023, 13, 2007</div>
+        <div class="pub-doi"><a href="https://doi.org/10.3390/nano13132007" target="_blank">doi.org/10.3390/nano13132007 ↗</a></div>
+      </div>
+      <span class="pub-badge en">HER</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">13</div>
+      <div>
+        <div class="pub-title">Thin Film Nanocarbon Composites for Supercapacitor Applications</div>
+        <div class="pub-meta">Schopf, D.; Es-Souni, M. · <span class="pub-journal en">Carbon</span> · 2017, 115, 449–459</div>
+        <div class="pub-doi">DOI: 10.1016/j.carbon.2017.01.027</div>
+      </div>
+      <span class="pub-badge en">Supercapacitor</span>
+    </div>
+
+    <div class="pub-item" data-cat="en">
+      <div class="pub-num en">14</div>
+      <div>
+        <div class="pub-title">Porous PtPd Alloy Nanotubes: Towards High-Performance Electrocatalysts with Low Pt-Loading</div>
+        <div class="pub-meta">Laghrissi, A.; Es-Souni, M. · <span class="pub-journal en">Catalysis Science & Technology</span> · 2019, 9, 4355</div>
+        <div class="pub-doi">DOI: 10.1039/c9cy01145e</div>
+      </div>
+      <span class="pub-badge en">Electrocatalysis</span>
+    </div>
+
+  </div>
+  <div style="margin-top:2.2rem;">
+    <a href="https://www.imst-essouni.com/wp-content/uploads/2022/05/Publikationsliste-Es-Souni.pdf" target="_blank" class="cta" style="text-decoration:none;">View full publication list (160+ papers) →</a>
+  </div>
+</section>
+
+<!-- PATENTS -->
+<section id="patents">
+  <div class="sec-label gold">Patents & IP</div>
+  <h2><em class="go">15 patents</em> — application-ready<br>surface technologies</h2>
+  <p class="sec-intro">A portfolio of granted German, European, and US patents in antifouling coatings and functional surfaces — available for licensing, joint development, or technology transfer.</p>
+  <div class="patents-grid">
+    <div class="pat-card af">
+      <div class="pat-num">DE102018127812B4 · Granted June 2020</div>
+      <div class="pat-title">Contact Lens Coating and Process Thereof</div>
+      <p class="pat-detail">Functional antifouling and wettability-enhancing coating for rigid gas-permeable (RGP) contact lenses. Environmentally friendly photografting process.</p>
+      <div class="pat-granted">✓ Granted — DE</div>
+    </div>
+    <div class="pat-card af">
+      <div class="pat-num">DE102018115709B4 · Granted March 2020</div>
+      <div class="pat-title">Antibacterial Coating for Medical Implants</div>
+      <p class="pat-detail">Release-free antibacterial surface treatment for implantable medical devices. Durable, biocompatible anti-adhesive performance without biocidal leaching.</p>
+      <div class="pat-granted">✓ Granted — DE</div>
+    </div>
+    <div class="pat-card af">
+      <div class="pat-num">EP 18703549.8 · Granted May 2022</div>
+      <div class="pat-title">Transparent Scratch-Resistant Antifouling Coating</div>
+      <p class="pat-detail">European patent for a transparent, mechanically durable antifouling coating. Combines optical clarity with scratch resistance and protein-repellent surface chemistry for sensors, optics, and glass.</p>
+      <div class="pat-granted">✓ Granted — European</div>
+    </div>
+    <div class="pat-card af">
+      <div class="pat-num">European Patent Nr. 12 732 952.2</div>
+      <div class="pat-title">Functional Coating for Polymer Substrates</div>
+      <p class="pat-detail">Coating system tailored for polymers and silicones — imparting hydrophilicity, anti-adhesion, and surface energy control. Applicable to medical housings, tubing, and consumer devices.</p>
+      <div class="pat-granted">✓ Granted — European</div>
+    </div>
+    <div class="pat-card af">
+      <div class="pat-num">DE 10 2010 044 234</div>
+      <div class="pat-title">Porous Coatings and Process Thereof</div>
+      <p class="pat-detail">Controlled production of porous coating layers enabling combined antifouling and functional performance through structural engineering at the nano- and microscale.</p>
+      <div class="pat-granted">✓ Granted — DE</div>
+    </div>
+    <div class="pat-card">
+      <div class="pat-num">EP 2,283,082 B1 · US US8771830B2</div>
+      <div class="pat-title">Hydrophobic Coating</div>
+      <p class="pat-detail">Dual European and US patent for a durable hydrophobic anti-fingerprint and oleophobic coating for glass, ceramics, and metals. Validated commercial deployment.</p>
+      <div class="pat-granted">✓ Granted — EU + US</div>
+    </div>
+  </div>
+  <div style="margin-top:1.8rem;">
+    <a href="https://www.imst-essouni.com/wp-content/uploads/2022/05/Recently-granted-patents.pdf" target="_blank" class="cta" style="text-decoration:none;">View recently granted patents →</a>
+  </div>
+
+  <div class="lic-banner" id="licensing">
+    <div>
+      <div class="sec-label teal" style="margin-bottom:0.9rem;">IP Licensing & Technology Transfer</div>
+      <h2 style="font-size:1.7rem;margin-bottom:0.65rem;">Available for <em class="af">licensing</em><br>& collaboration</h2>
+      <p style="color:var(--text2);max-width:520px;font-size:0.93rem;line-height:1.82;">The IMST patent portfolio covers proven, scalable surface technologies for antifouling and functional coating applications. Contact us to explore licensing arrangements, joint development agreements, or technology transfer partnerships.</p>
+    </div>
+    <a href="#contact" class="cta" style="text-decoration:none;white-space:nowrap;">Discuss licensing →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label gold">Contact</div>
+  <h2>Get in<br><em class="go">touch</em></h2>
+  <p class="sec-intro">For industrial partnerships, IP licensing, R&D collaborations, or consulting in antifouling coatings and energy technologies.</p>
+  <div class="contact-grid">
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+      <div class="ci"><span class="ci-label">Name & Title</span><span class="ci-val">Prof. Dr. Mohammed Es-Souni<br>Honorary Member, Kiel University of Applied Sciences</span></div>
+      <div class="ci"><span class="ci-label">Institution</span><span class="ci-val">IMST — Institut für Werkstoff- und Oberflächentechnologie<br>Fachhochschule Kiel, Germany</span></div>
+      <div class="ci"><span class="ci-label">Email</span><span class="ci-val"><a href="mailto:M-Es-Souni@imst-essouni.com">M-Es-Souni@imst-essouni.com</a></span></div>
+      <div class="ci"><span class="ci-label">Phone</span><span class="ci-val"><a href="tel:+491713063117">+49 (0) 171 306 311 7</a></span></div>
+      <div class="ci"><span class="ci-label">Website</span><span class="ci-val"><a href="https://www.imst-essouni.com" target="_blank">www.imst-essouni.com</a></span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:2rem;">
+      <div class="ci">
+        <span class="ci-label">Areas of Engagement</span>
+        <span class="ci-val" style="color:var(--text2);font-size:0.9rem;line-height:2.1;">
+          <span style="color:var(--teal);">◆</span> Antibiofouling coating development & scale-up<br>
+          <span style="color:var(--teal);">◆</span> Scratch-resistant non-fouling surfaces<br>
+          <span style="color:var(--teal);">◆</span> Medical device & implant surface engineering<br>
+          <span style="color:var(--blue);">◆</span> Piezoelectric & pyroelectric energy harvesting<br>
+          <span style="color:var(--blue);">◆</span> Nanostructured supercapacitor electrodes<br>
+          <span style="color:var(--blue);">◆</span> Electrocatalysis for hydrogen generation<br>
+          <span style="color:var(--gold);">◆</span> IP licensing & technology transfer
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-logo">IMST · Es-Souni</span>
+  <span>© 2026 Institut für Werkstoff- und Oberflächentechnologie, Kiel</span>
+  <span>
+    <a href="https://www.imst-essouni.com/impressum" target="_blank">Impressum</a>
+    <a href="https://www.imst-essouni.com/datenschutzerklaerung" target="_blank">Datenschutz</a>
+  </span>
+</footer>
+
+<script>
+function setTopic(el){
+  document.querySelectorAll('.topic').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+function filterPubs(cat, btn, cls){
+  document.querySelectorAll('.pf').forEach(b=>b.classList.remove('active-all','active-af','active-en'));
+  btn.classList.add(cls);
+  let n=1;
+  document.querySelectorAll('.pub-item').forEach(p=>{
+    const show = cat==='all'||p.dataset.cat===cat;
+    p.style.display = show?'grid':'none';
+    if(show){
+      const num=p.querySelector('.pub-num');
+      num.textContent=String(n++).padStart(2,'0');
+    }
+  });
+}
+</script>
+</body>
+</html>
