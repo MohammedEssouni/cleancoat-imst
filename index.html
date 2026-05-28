@@ -189,8 +189,15 @@
   .hero-right{animation:fadeUp 0.85s 0.28s ease both;}
 
   /* ── RESPONSIVE ── */
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
+  .nav-mobile{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(9,12,15,0.97);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+  .nav-mobile a{color:var(--text);text-decoration:none;font-family:var(--fd);font-size:2rem;font-weight:300;letter-spacing:0.05em;}
+  .nav-mobile a:hover{color:var(--gold);}
+  .nav-mobile.open{display:flex;}
+  .nav-close{position:absolute;top:1.5rem;right:2rem;font-size:1.5rem;color:var(--text2);cursor:pointer;background:none;border:none;}
   @media(max-width:900px){
-    nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+    nav{padding:1rem 1.5rem;} .nav-links{display:none;} .hamburger{display:flex;}
     .hero{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;gap:2.5rem;} .hero-right{display:none;}
     section{padding:3.8rem 1.5rem;}
     .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
@@ -216,7 +223,22 @@
     <li><a href="#patents">Patents & IP</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="hamburger" onclick="openMenu()">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-mobile" id="mobileMenu">
+  <button class="nav-close" onclick="closeMenu()">✕</button>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#antifouling" onclick="closeMenu()">Antifouling</a>
+  <a href="#energy" onclick="closeMenu()">Hydrogen & Catalysis</a>
+  <a href="#career" onclick="closeMenu()">Career</a>
+  <a href="#publications" onclick="closeMenu()">Publications</a>
+  <a href="#patents" onclick="closeMenu()">Patents & IP</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -646,6 +668,9 @@
 </footer>
 
 <script>
+function openMenu(){ document.getElementById('mobileMenu').classList.add('open'); }
+function closeMenu(){ document.getElementById('mobileMenu').classList.remove('open'); }
+
 function setTopic(el){
   document.querySelectorAll('.topic').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
