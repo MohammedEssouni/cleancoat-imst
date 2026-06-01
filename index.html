@@ -272,6 +272,16 @@
     .stats{gap:1.8rem;}
     footer{flex-direction:column;gap:0.8rem;text-align:center;}
   }
+  /* Contact form */
+  .cform{display:flex;flex-direction:column;gap:1rem;}
+  .cform-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .cform label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);margin-bottom:0.35rem;display:block;}
+  .cform input,.cform textarea{width:100%;background:var(--bg2);border:0.5px solid var(--border2);color:var(--text);font-family:var(--fb);font-size:0.92rem;padding:0.75rem 0.9rem;transition:border-color 0.2s;}
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--gold);}
+  .cform textarea{resize:vertical;min-height:120px;}
+  .cform button{margin-top:0.4rem;align-self:flex-start;display:inline-flex;align-items:center;gap:0.6rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.8rem 2rem;font-family:var(--fb);font-size:0.76rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.22s;}
+  .cform button:hover{background:rgba(201,168,76,0.09);}
+  @media(max-width:900px){ .cform-row{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -631,7 +641,7 @@
 
   </div>
   <div style="margin-top:2.2rem;">
-    <a href="https://www.cleancoat-imst.de/wp-content/uploads/2022/05/Publikationsliste-Es-Souni.pdf" target="_blank" class="cta" style="text-decoration:none;">View full publication list (160+ papers) →</a>
+    <a href="https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID" target="_blank" target="_blank" class="cta" style="text-decoration:none;">View full publication list on Google Scholar →</a>
   </div>
 </section>
 
@@ -679,7 +689,7 @@
     </div>
   </div>
   <div style="margin-top:1.8rem;">
-    <a href="https://www.cleancoat-imst.de/wp-content/uploads/2022/05/Recently-granted-patents.pdf" target="_blank" class="cta" style="text-decoration:none;">View recently granted patents →</a>
+    <a href="mailto:contact@cleancoat-imst.de" target="_blank" class="cta" style="text-decoration:none;">Request patent portfolio →</a>
   </div>
 
   <div class="lic-banner" id="licensing">
@@ -751,8 +761,8 @@
   <span class="foot-logo">IMST · Es-Souni</span>
   <span>© 2026 Institut für Werkstoff- und Oberflächentechnologie, Kiel</span>
   <span>
-    <a href="https://www.cleancoat-imst.de/impressum" target="_blank">Impressum</a>
-    <a href="https://www.cleancoat-imst.de/datenschutz" target="_blank">Datenschutz</a>
+    <a href="#contact">Impressum</a>
+    <a href="#contact">Datenschutz</a>
   </span>
 </footer>
 
